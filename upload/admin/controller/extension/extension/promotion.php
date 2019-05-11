@@ -1,6 +1,7 @@
 <?php
 class ControllerExtensionExtensionPromotion extends Controller {
 	public function index() {
+		/*
 		$curl = curl_init();
 
 		curl_setopt($curl, CURLOPT_URL, OPENCART_SERVER . 'index.php?route=api/promotion&type=' . substr($this->request->get['route'], strrpos($this->request->get['route'], '/') + 1));
@@ -19,5 +20,8 @@ class ControllerExtensionExtensionPromotion extends Controller {
 		} else {
 			return '';
 		}
+		*/
+		
+		return '';
 	}
 }
