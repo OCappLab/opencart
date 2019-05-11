@@ -692,6 +692,9 @@ class ControllerCatalogProduct extends Controller {
 				'quantity'   => $result['quantity'],
 				'status'     => $result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
 				'edit'       => $this->url->link('catalog/product/edit', 'user_token=' . $this->session->data['user_token'] . '&product_id=' . $result['product_id'] . ($result['master_id'] ? '&master_id=' . $result['master_id'] : ''). $url),
+				'view'		 => ($this->request->server['HTTPS'] ? HTTPS_CATALOG : HTTP_CATALOG) .'index.php?route=product/product&product_id='.$result['product_id'],
+				'copy'		 => $this->url->link('catalog/product/copy', 'user_token=' . $this->session->data['user_token'] . '&product_id=' . $result['product_id'] . ($result['master_id'] ? '&master_id=' . $result['master_id'] : ''). $url),
+				'delete'	 => $this->url->link('catalog/product/delete', 'user_token=' . $this->session->data['user_token'] . '&product_id=' . $result['product_id'] . ($result['master_id'] ? '&master_id=' . $result['master_id'] : ''). $url),
 				'variant'    => (!$result['master_id'] ? $this->url->link('catalog/product/add', 'user_token=' . $this->session->data['user_token'] . '&master_id=' . $result['master_id'] . $url) : '')
 			);
 		}
@@ -916,6 +919,12 @@ class ControllerCatalogProduct extends Controller {
 		}
 
 		$data['cancel'] = $this->url->link('catalog/product', 'user_token=' . $this->session->data['user_token'] . $url);
+		
+		$data['view'] = false;
+			
+		if (isset($this->request->get['product_id']) && $this->request->get['product_id']) {
+			$data['view'] = ($this->request->server['HTTPS'] ? HTTPS_CATALOG : HTTP_CATALOG) .'index.php?route=product/product&product_id='.$this->request->get['product_id'];
+		}
 
 		// If master_id then we need to get the variant info
 		if (isset($this->request->get['product_id'])) {

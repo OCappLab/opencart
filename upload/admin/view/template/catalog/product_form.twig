@@ -7,6 +7,9 @@
           <button type="submit" form="form-product" formaction="{{ variant }}" data-toggle="tooltip" title="{{ button_variant }}" class="btn btn-warning"><i class="fas fa-save"></i></button>
         {% endif %}
         <button type="submit" form="form-product" formaction="{{ action }}" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fas fa-save"></i></button>
+        {% if view %}
+			<a href="{{ view }}" class="btn btn-warning" data-toggle="tooltip" title="{{ button_view }}" target="_blank"><i class="fa fa-eye"></i></a> 
+		{% endif %}
         <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-light"><i class="fas fa-reply"></i></a></div>
       <h1>{{ heading_title }}</h1>
       <ol class="breadcrumb">

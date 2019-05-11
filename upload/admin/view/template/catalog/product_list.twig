@@ -70,7 +70,7 @@
           <div class="card-header"><i class="fas fa-list"></i> {{ text_list }}</div>
           <div class="card-body">
             <form action="{{ delete }}" method="post" enctype="multipart/form-data" id="form-product">
-              <div class="table-responsive">
+              <div class="table-responsive" style="overflow:visible;">
                 <table class="table table-bordered table-hover">
                   <thead>
                     <tr>
@@ -121,10 +121,27 @@
                               <div class="btn-group">
                                 <a href="{{ product.edit }}" data-toggle="tooltip" title="{{ button_edit }}" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
                                 <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"><i class="fas fa-caret-down"></i></button>
-                                <div class="dropdown-menu dropdown-menu-right"><a href="{{ product.variant }}" class="dropdown-item"><i class="fas fa-plus"></i> {{ text_variant_add }}</a></div>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                	<ul class="dropdown-menu dropdown-menu-right">
+	                                	<li><a href="{{ product.variant }}" class="dropdown-item"><i class="fas fa-plus"></i> {{ text_variant_add }}</a></li>
+	                                	<li><a href="{{ product.view }}" target="_blank"><i class="fa fa-eye"></i> {{ button_view }}</a></li>
+										<li><a href="{{ product.copy }}"><i class="fa fa-copy"></i> {{ button_copy }}</a></li>
+										<li><a href="javascript:;" onclick="confirm('{{ text_confirm }}') ? location = '{{ product.delete }}' : false;"><i class="fa fa-trash-o"></i> {{ button_delete }}</a></li>
+                                	</ul>
+                                </div>
                               </div>
                             {% else %}
-                              <a href="{{ product.edit }}" data-toggle="tooltip" title="{{ button_edit }}" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
+                              <div class="btn-group">
+                                <a href="{{ product.edit }}" data-toggle="tooltip" title="{{ button_edit }}" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
+                                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"><i class="fas fa-caret-down"></i></button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                	<ul class="dropdown-menu dropdown-menu-right">
+	                                	<li><a href="{{ product.view }}" target="_blank"><i class="fa fa-eye"></i> {{ button_view }}</a></li>
+										<li><a href="{{ product.copy }}"><i class="fa fa-copy"></i> {{ button_copy }}</a></li>
+										<li><a href="javascript:;" onclick="confirm('{{ text_confirm }}') ? location = '{{ product.delete }}' : false;"><i class="fa fa-trash-o"></i> {{ button_delete }}</a></li>
+                                	</ul>
+                                </div>
+                              </div>
                             {% endif %}
                           </td>
                         </tr>
