@@ -22,7 +22,7 @@ class ControllerMarketplaceExtension extends Controller {
 		if (isset($this->request->get['type'])) {
 			$data['type'] = $this->request->get['type'];
 		} else {
-			$data['type'] = '';
+			$data['type'] = 'module';
 		}
 		
 		$data['categories'] = array();
